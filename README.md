@@ -62,8 +62,7 @@ Data is extracted from SQL Server source, transformed using SSIS transformations
 - OLE DB Destination --> To load data in Destination Source 
 <img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Dim_Territory.png">
 
-
-# Fact_Sales 
+# Fact_Sales full load 
 ## truncate fact_sales --> to truncate all data from table befora Laod new data ,then laod all data from first 
 ## Data Flow Task --> To create Data Flow 
 - Sales Order Header --> to connection data from source
@@ -77,4 +76,25 @@ Data is extracted from SQL Server source, transformed using SSIS transformations
 - Insert Destination --> To load data in Destination Source 
 <img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Fact_Sales_Full%20Load.png">
 <img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Fact_Sales_Full%20Load%202.png">
+
+
+# Fact_Sales incremental load 
+## EST - Get last_loas_date--> Used Execute SQL Task to retrieve the last processed date ,ensuring the data flow only processes new or update records after this date
+## Data Flow Task --> To create Data Flow 
+## Execute SQL Task --> Used Execute SQL Task to retrieve the latest date from the Data Warehouse after loading, updating the control table to ensure the next ETL run processes only new or changed data.
+
+- Sales Order Header --> to connection data from source
+- Sales Order Details --> to connection data from source
+- Merge Join --> to merge join between 'Sales Order Header' & 'Sales Order Details'
+- LKP-Custmoer --> Used Lookup to match and retrive related data from referene tables during the Data Flow
+- LKP-Product --> Used Lookup to match and retrive related data from referene tables during the Data Flow
+- LKP-Territory --> Used Lookup to match and retrive related data from referene tables during the Data Flow
+- LKP-Date --> Used Lookup to match and retrive related data from referene tables during the Data Flow
+- DC- Replace Nulls --> Used Derived Column  to Replace null values with default values or calculated expressions during the Data Flow
+- Insert Destination --> To load data in Destination Source 
+<img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Fact_Sales%20incremental%20load.png">
+<img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Fact_Sales_Full%20Load%202.png">
+">
+
+
 
