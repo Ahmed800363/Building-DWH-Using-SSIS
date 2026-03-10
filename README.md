@@ -32,7 +32,7 @@ Data is extracted from SQL Server source, transformed using SSIS transformations
 - DC-Source-System-Code --> To Add column
 - Custmoer-info --> to doing Lookup
 - Slowly Changing Dimension -- > Implemented Slowly Changing Dimension to track historical changes in dimension data while pressving past records .
-- 
+- Insert Destination --> To load data in Destination Source 
 <img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Dim_customer.png">
 <img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Dim_customer2.png">
 
