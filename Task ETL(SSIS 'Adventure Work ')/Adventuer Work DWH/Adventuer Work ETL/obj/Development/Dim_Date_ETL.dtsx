@@ -1,0 +1,670 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/8/2026 10:24:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-DQ5ITGA"
+  DTS:CreatorName="DESKTOP-DQ5ITGA\ahmed"
+  DTS:DTSID="{13023597-5CC6-4B2B-8A2D-FD67B0620434}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1010.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{DED05458-15D0-4E84-B63F-163FCCFDEBD3}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{052767C8-9901-4A5A-8F91-01BD71571A11}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=D:\DEPI(Technical)\week 10\session 2 (part 43 SSIS)\Task ETL(SSIS 'Adventure Work ')\Souce Data Adventuuer work 2\try.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 2]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{55CBE47F-D924-4BB5-9157-3EF7B3BBDABC}"
+      DTS:ObjectName="Excel Connection Manager 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=D:\DEPI(Technical)\week 10\session 2 (part 43 SSIS)\Task ETL(SSIS 'Adventure Work ')\Souce Data Adventuuer work 2\102_dim_date_01_populate_table.xls;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFL-Dim_Date"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8F840EAA-A70A-493F-9E0D-5DE0FD369E62}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFL-Dim_Date"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFL-Dim_Date\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFL-Dim_Date\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFL-Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[calendar_month_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="calendar_month_name"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_month_name]" />
+                    <inputColumn
+                      refId="Package\DFL-Dim_Date\Data Conversion.Inputs[Data Conversion Input].Columns[full_date]"
+                      cachedDataType="date"
+                      cachedName="full_date"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[full_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFL-Dim_Date\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of calendar_month_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of calendar_month_name]"
+                      name="Copy of calendar_month_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_month_name]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of full_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of full_date]"
+                      name="Copy of full_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[full_date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFL-Dim_Date\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFL-Dim_Date\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFL-Dim_Date\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 2]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 2]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[full_date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[full_date]"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[full_date]"
+                      name="full_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[date_key]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[date_key]"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[date_key]"
+                      name="date_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[calendar_year]"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_year]"
+                      name="calendar_year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_quarter]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[calendar_quarter]"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_quarter]"
+                      name="calendar_quarter"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_month_num]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[calendar_month_num]"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_month_num]"
+                      name="calendar_month_num"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_month_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[calendar_month_name]"
+                      length="255"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_month_name]"
+                      name="calendar_month_name"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[full_date]"
+                      dataType="date"
+                      name="full_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[date_key]"
+                      dataType="r8"
+                      name="date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[calendar_year]"
+                      dataType="r8"
+                      name="calendar_year" />
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[calendar_quarter]"
+                      dataType="r8"
+                      name="calendar_quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[calendar_month_num]"
+                      dataType="r8"
+                      name="calendar_month_num" />
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].ExternalColumns[calendar_month_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="calendar_month_name" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[full_date]"
+                      dataType="date"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[full_date]"
+                      name="full_date" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[date_key]"
+                      dataType="r8"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[date_key]"
+                      name="date_key" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[calendar_year]"
+                      dataType="r8"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[calendar_year]"
+                      name="calendar_year" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[calendar_quarter]"
+                      dataType="r8"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[calendar_quarter]"
+                      name="calendar_quarter" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[calendar_month_num]"
+                      dataType="r8"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[calendar_month_num]"
+                      name="calendar_month_num" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[calendar_month_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[calendar_month_name]"
+                      name="calendar_month_name" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFL-Dim_Date\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_date]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFL-Dim_Date\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{3BBC60BB-4BBB-4FB3-9439-049258F45027}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LocalHost.EO_AdventureWorksDW2014]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[date_key]"
+                      cachedDataType="r8"
+                      cachedName="date_key"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[date_key]" />
+                    <inputColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[calendar_year]"
+                      cachedDataType="r8"
+                      cachedName="calendar_year"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_year]"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_year]" />
+                    <inputColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[calendar_quarter]"
+                      cachedDataType="r8"
+                      cachedName="calendar_quarter"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_quarter]"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_quarter]" />
+                    <inputColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[calendar_month_num]"
+                      cachedDataType="r8"
+                      cachedName="calendar_month_num"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_num]"
+                      lineageId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output].Columns[calendar_month_num]" />
+                    <inputColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of calendar_month_name]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Copy of calendar_month_name"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_name]"
+                      lineageId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of calendar_month_name]" />
+                    <inputColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of full_date]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of full_date"
+                      externalMetadataColumnId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[full_date]"
+                      lineageId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of full_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[date_key]"
+                      dataType="i4"
+                      name="date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[full_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="full_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_year]"
+                      dataType="i4"
+                      name="calendar_year" />
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_quarter]"
+                      dataType="i4"
+                      name="calendar_quarter" />
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_num]"
+                      dataType="i4"
+                      name="calendar_month_num" />
+                    <externalMetadataColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[calendar_month_name]"
+                      dataType="wstr"
+                      length="15"
+                      name="calendar_month_name" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFL-Dim_Date\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFL-Dim_Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFL-Dim_Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFL-Dim_Date\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFL-Dim_Date.Paths[Data Conversion Output]"
+              endId="Package\DFL-Dim_Date\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\DFL-Dim_Date\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFL-Dim_Date.Paths[Excel Source Output]"
+              endId="Package\DFL-Dim_Date\Data Conversion.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\DFL-Dim_Date\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="148,41.6"
+          Id="Package\DFL-Dim_Date"
+          TopLeft="409.166644310787,152.533332272636" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFL-Dim_Date">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DFL-Dim_Date\OLE DB Destination"
+          TopLeft="400.833311432767,388.999997378389" />
+        <NodeLayout
+          Size="140,41.6"
+          Id="Package\DFL-Dim_Date\Excel Source"
+          TopLeft="433.333309657045,116.999999186397" />
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\DFL-Dim_Date\Data Conversion"
+          TopLeft="363.333313481676,219.266665141914" />
+        <EdgeLayout
+          Id="Package\DFL-Dim_Date.Paths[Data Conversion Output]"
+          TopLeft="441.333313481676,260.866665141914">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.0999979510908,128.133332236475"
+              Start="0,0"
+              End="45.0999979510908,120.633332236475">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.0666661182377" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60.0666661182377"
+                    Point2="0,64.0666661182377"
+                    Point3="4,64.0666661182377" />
+                  <mssgle:LineSegment
+                    End="41.0999979510908,64.0666661182377" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.0999979510908,64.0666661182377"
+                    Point2="45.0999979510908,64.0666661182377"
+                    Point3="45.0999979510908,68.0666661182377" />
+                  <mssgle:LineSegment
+                    End="45.0999979510908,120.633332236475" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFL-Dim_Date.Paths[Excel Source Output]"
+          TopLeft="503.333309657045,158.599999186397">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.9999961753689,60.6666659555171"
+              Start="0,0"
+              End="-61.9999961753689,53.1666659555171">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.3333329777585" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.3333329777585"
+                    Point2="0,30.3333329777585"
+                    Point3="-4,30.3333329777585" />
+                  <mssgle:LineSegment
+                    End="-57.9999961753689,30.3333329777585" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.9999961753689,30.3333329777585"
+                    Point2="-61.9999961753689,30.3333329777585"
+                    Point3="-61.9999961753689,34.3333329777585" />
+                  <mssgle:LineSegment
+                    End="-61.9999961753689,53.1666659555171" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFL-Dim_Date\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFL-Dim_Date\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
