@@ -36,4 +36,12 @@ Data is extracted from SQL Server source, transformed using SSIS transformations
 <img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Dim_customer.png">
 <img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Dim_customer2.png">
 
-
+# Dim_Product
+## DFT-Dim-product --> To create Data Flow 
+- Product Table --> to connection data from source
+- LKP-product model and LKP-product sub-cat --> Used Lookup to match and retrive related data from referene tables during the Data Flow
+- Dd-Col-Replace NULL --> Used Derived Column  to Replace null values with default values or calculated expressions during the Data Flow
+- Slowly Changing Dimension -- > Implemented Slowly Changing Dimension to track historical changes in dimension data while pressving past records .
+- Insert Destination --> To load data in Destination Source 
+<img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Dim_Product.png">
+<img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Dim_Product2.png">
