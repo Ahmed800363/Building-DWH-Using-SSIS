@@ -21,3 +21,10 @@ End-to-End Data Warehouse project using SSIS. Includes ETL pipelines for extract
 ## Design Diagram 
 ##### This Diagram of DWH 
 <img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Design%20Diagram.png">
+# ETL For SSIS
+- Built ETL pipelines using SSIS to extract data from source databases, apply transformation logic, and load the processed data into the Data Warehouse.
+The ETL process includes data extraction, data cleansing, transformation, and loading into fact and dimension tables.
+Data is extracted from SQL Server source, transformed using SSIS transformations, and loaded into a structured Data Warehouse schema.
+## Dim_Customer
+<img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Design%20Diagram.png">
+
