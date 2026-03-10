@@ -8,7 +8,7 @@ End-to-End Data Warehouse project using SSIS. Includes ETL pipelines for extract
 - Data Warehouse
 - ETL
 ## Design Pipeline
-- Source Systems
+- Source Systems (SQL Server)
 -    |
 -    v
 - SSIS ETL (ETL)
@@ -17,4 +17,4 @@ End-to-End Data Warehouse project using SSIS. Includes ETL pipelines for extract
 - Data Warehouse (Fact & Dimension Tables)
 -    |
 -    v
-- Destination Source
+- Destination Source (SQL Server)
