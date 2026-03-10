@@ -62,3 +62,19 @@ Data is extracted from SQL Server source, transformed using SSIS transformations
 - OLE DB Destination --> To load data in Destination Source 
 <img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Dim_Territory.png">
 
+
+# Fact_Sales 
+## truncate fact_sales --> to truncate all data from table befora Laod new data ,then laod all data from first 
+## Data Flow Task --> To create Data Flow 
+- Sales Order Header --> to connection data from source
+- Sales Order Details --> to connection data from source
+- Merge Join --> to merge join between 'Sales Order Header' & 'Sales Order Details'
+- LKP-Custmoer --> Used Lookup to match and retrive related data from referene tables during the Data Flow
+- LKP-Product --> Used Lookup to match and retrive related data from referene tables during the Data Flow
+- LKP-Territory --> Used Lookup to match and retrive related data from referene tables during the Data Flow
+- LKP-Date --> Used Lookup to match and retrive related data from referene tables during the Data Flow
+- DC- Replace Nulls --> Used Derived Column  to Replace null values with default values or calculated expressions during the Data Flow
+- Insert Destination --> To load data in Destination Source 
+<img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Dim_Product.png">
+<img src = "https://github.com/Ahmed800363/Building-DWH-Using-SSIS/blob/main/Task%20ETL(SSIS%20'Adventure%20Work%20')/Images/Dim_Product2.png">
+
